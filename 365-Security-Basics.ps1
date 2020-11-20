@@ -1,5 +1,5 @@
 <# 
-This Script is ment for the inital deployment of a new 365 teneancy. 
+This Script is meant for the inital deployment of a new 365 tenancy. 
 It will go through all the inital setup steps that need to be done to configure the tenancy properly. 
 
 Replace %email% with contact email for alerts. 
@@ -37,7 +37,7 @@ if ((Test-Admin) -eq $false)  {
     exit
 }
 
-$msg = 'Do you need to install exchange powershell?'
+$msg = 'Do you need to install Exchange Powershell?'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -50,7 +50,7 @@ do {
 cls
 $msg = 'Do you need to add the tenancy into our partner portal? 
 
-PLEASE NOTE: If you say yes it will open a incogito window for CHROME. 
+PLEASE NOTE: If you say yes it will open a incognito window for CHROME. 
 If you are signed into another tenancy it will add it to the wrong instance.
 
 '
@@ -66,12 +66,12 @@ do {
 
 Pause
 Connect-ExchangeOnline
-Write-Host "Did you just get a bunch of red Errors? That likely means you need to install exchange powershell again. Close this window and restart as admin."
+Write-Host "Did you just get a bunch of red Errors? That likely means you need to install Exchange Powershell again. Close this window and restart as admin."
 Pause
 Enable-OrganizationCustomization
 Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true
 
-$msg = 'Do you want to use Enable Bulk mail filtering?'
+$msg = 'Do you want to use enable Bulk Mail Filtering?'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -82,7 +82,7 @@ do {
         $response = 2
 } until ($response -eq 2)
 
-$msg = 'Do you want to use the fuck off bitcoin rule?'
+$msg = 'Do you want to use the Bitcoin filter?'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -109,7 +109,7 @@ do {
         $response = 2
 } until ($response -eq 2)
 
-$msg = 'Do you want to use the  outbound SPAM filter'
+$msg = 'Do you want to use the outbound SPAM filter'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -119,7 +119,7 @@ do {
     }
 } until ($response -eq 2)
 
-$msg = 'Do you want to use the  Phish filter'
+$msg = 'Do you want to use the Phish filter'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -129,7 +129,7 @@ do {
     }
 } until ($response -eq 2)
 
-$msg = 'Do you want to use Enable DKIM?'
+$msg = 'Do you want to Enable DKIM?'
 do {
     choice /c yn /m $msg
     $response = $LASTEXITCODE
@@ -137,10 +137,10 @@ do {
         cls
         Write-Host "
         This file has been created in order to help you create the required DNS records for your domain.
-        There will be two dialog boxes open up asking you to enter the domain info.
+        There will be two dialog boxes that open asking you to enter the domain info.
 
         In the second, it is imporant that you include the '.onmicrosoft.com' section. 
-        If DNS managment isn't with 365 yet; then propergation may take 1-24 hours. 
+        If DNS management isn't with 365 yet; then propagation may take 1-24 hours. 
         "
         Pause
         [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic') | Out-Null
@@ -161,7 +161,7 @@ do {
         "
         Write-Host "
         Now you need to take the above and create CNAME records for the above values. 
-        If these domains are in 365 then you will be able to do the next step immedatly.
+        If these domains are in 365 then you will be able to do the next step immediately.
         If not then you will need to run 'dkim.ps1' "
         #whitespace
         Write-Host "       
